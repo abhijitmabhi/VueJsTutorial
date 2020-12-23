@@ -1,13 +1,23 @@
 <template>
-    <h1>{{title}}</h1>
-    <p>Something else</p>
+    <div>
+      <h1>Dc Heros</h1>
+      <ul>
+        <li v-for="item in dcHeros">{{item.name}}</li>
+      </ul>
+    </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      title: "Heyy Vue 3"
+      dcHeros: [
+        {name: "SuperGirl"},
+        {name: "BatMan"},
+        {name: "SpiderMan"},
+        {name: "MonkeyMan"},
+        {name: "CaptainPlanet"},
+      ]
     }
   },
 }
