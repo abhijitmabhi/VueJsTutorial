@@ -4,7 +4,7 @@
       <ul>
         <li v-for="(hero,index) in dcHeros" :key="index">{{index}} {{hero.name}}</li>
       </ul>
-      <input :value="newHero">
+      <input v-model.lazy="newHero">
       <button :disabled="isDisabled">Add Hero</button>
     </div>
 </template>
