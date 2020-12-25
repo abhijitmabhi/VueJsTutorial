@@ -1,12 +1,6 @@
 <template>
     <div>
       <h1>Dc Heros {{herosCount}}</h1>
-      <h1>Dc Heros {{randC}}</h1>
-      <h1>Dc Heros {{randC}}</h1>
-      <h1>Dc Heros {{randC}}</h1>
-      <h1>Dc Heros {{randM()}}</h1>
-      <h1>Dc Heros {{randM()}}</h1>
-      <h1>Dc Heros {{randM()}}</h1>
       <ul>
         <li v-for="(hero,index) in dcHeros" :key="index">{{index}} {{hero.name}}</li>
       </ul>
@@ -15,7 +9,7 @@
         <input v-model.trim="newHero" placeholder="Type a Hero name">
         <button submit>Add Hero</button>
       </form>
-      
+      <button @click="setFullName">Set FullName</button>
     </div>
 </template>
 
@@ -26,8 +20,16 @@ export default {
       return this.dcHeros.length;
     },
 
-    randC(){
-      return this.dcHeros.length + Math.random();
+    fullName: {
+      get(){
+        return `${this.firstName} ${this.lastName}`;
+      } ,
+      set(fullName){
+        const values = fullName.split(" ");
+        this.firstName = values[0];
+        this.lastName = values[1];
+      }
+       
     }
   },
   methods: {
@@ -41,12 +43,14 @@ export default {
       }
     },
 
-     randM(){
-      return this.dcHeros.length + Math.random();
+    setFullName(){
+      this.fullName = "Ahsan Kabir";
     }
   },
   data() {
     return {
+      firstName: "Abhijit M.",
+      lastName: "Abhi",
       isDisabled: true,
       newHero: "",
       dcHeros: [
