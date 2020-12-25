@@ -4,8 +4,15 @@
       <ul>
         <li v-for="(hero,index) in dcHeros" :key="index">{{index}} {{hero.name}}</li>
       </ul>
-      <input v-model.lazy="newHero">
-      <button @click="newHero = 'Wonder Woman'">Add Hero</button>
+      <form 
+            @submit.prevent="
+            dcHeros.push({name: newHero});
+            newHero=''
+            ">
+        <input v-model.trim="newHero">
+        <button submit>Add Hero</button>
+      </form>
+      
     </div>
 </template>
 
@@ -14,7 +21,7 @@ export default {
   data() {
     return {
       isDisabled: true,
-      newHero: "Aquman",
+      newHero: "",
       dcHeros: [
         {name: "SuperGirl"},
         {name: "BatMan"},
