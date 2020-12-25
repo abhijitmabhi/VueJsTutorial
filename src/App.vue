@@ -5,11 +5,8 @@
         <li v-for="(hero,index) in dcHeros" :key="index">{{index}} {{hero.name}}</li>
       </ul>
       <form 
-            @submit.prevent="
-            dcHeros.push({name: newHero});
-            newHero=''
-            ">
-        <input v-model.trim="newHero">
+            @submit.prevent="addHero">
+        <input v-model.trim="newHero" placeholder="Type a Hero name">
         <button submit>Add Hero</button>
       </form>
       
@@ -18,6 +15,12 @@
 
 <script>
 export default {
+  methods: {
+    addHero(){
+      this.dcHeros.push({name: this.newHero});
+      this.newHero='';
+    }
+  },
   data() {
     return {
       isDisabled: true,
