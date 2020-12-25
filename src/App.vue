@@ -1,6 +1,12 @@
 <template>
     <div>
-      <h1>Dc Heros</h1>
+      <h1>Dc Heros {{herosCount}}</h1>
+      <h1>Dc Heros {{randC}}</h1>
+      <h1>Dc Heros {{randC}}</h1>
+      <h1>Dc Heros {{randC}}</h1>
+      <h1>Dc Heros {{randM()}}</h1>
+      <h1>Dc Heros {{randM()}}</h1>
+      <h1>Dc Heros {{randM()}}</h1>
       <ul>
         <li v-for="(hero,index) in dcHeros" :key="index">{{index}} {{hero.name}}</li>
       </ul>
@@ -15,10 +21,28 @@
 
 <script>
 export default {
+  computed:{
+    herosCount(){
+      return this.dcHeros.length;
+    },
+
+    randC(){
+      return this.dcHeros.length + Math.random();
+    }
+  },
   methods: {
     addHero(){
-      this.dcHeros.push({name: this.newHero});
-      this.newHero='';
+      if(this.newHero !== ''){
+        this.dcHeros.unshift({name: this.newHero});
+        this.newHero='';
+      }
+      else{
+        alert('Filed is empty!');
+      }
+    },
+
+     randM(){
+      return this.dcHeros.length + Math.random();
     }
   },
   data() {
