@@ -1,8 +1,11 @@
 <template>
-    <div>
+    <div class="container mx-auto">
       <h1>Dc Heros {{herosCount}}</h1>
       <ul>
-        <li v-for="(hero,index) in dcHeros" :key="index">{{index}} {{hero.name}}</li>
+        <li v-for="(hero,index) in dcHeros" :key="hero.name">
+          <div>{{index}} {{hero.name}}<button @click="remove(index)">x</button></div>
+          <input>
+        </li>
       </ul>
       <form 
             @submit.prevent="addHero">
@@ -45,6 +48,10 @@ export default {
 
     setFullName(){
       this.fullName = "Ahsan Kabir";
+    },
+
+    remove(index){
+      this.dcHeros = this.dcHeros.filter((hero, i) => i!=index );
     }
   },
   data() {
