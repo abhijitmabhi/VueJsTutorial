@@ -5,7 +5,7 @@
         <li v-for="(hero,index) in dcHeros" :key="index">{{index}} {{hero.name}}</li>
       </ul>
       <input v-model.lazy="newHero">
-      <button :disabled="isDisabled">Add Hero</button>
+      <button @click="newHero = 'Wonder Woman'">Add Hero</button>
     </div>
 </template>
 
