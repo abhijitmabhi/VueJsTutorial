@@ -2,8 +2,10 @@
     <div>
       <h1>Dc Heros</h1>
       <ul>
-        <li v-for="item in dcHeros">{{item.name}}</li>
+        <li v-for="(hero,index) in dcHeros" :key="index">{{index}} {{hero.name}}</li>
       </ul>
+      <input :value="newHero">
+      <button :disabled="isDisabled">Add Hero</button>
     </div>
 </template>
 
@@ -11,6 +13,8 @@
 export default {
   data() {
     return {
+      isDisabled: true,
+      newHero: "Aquman",
       dcHeros: [
         {name: "SuperGirl"},
         {name: "BatMan"},
